@@ -8,8 +8,6 @@ import { getPractices, getReviews } from '../rater8/rater8.service';
 import * as pipelines from './pipeline.const';
 
 export const runPipeline = async () => {
-    logger.info({ fn: 'runPipeline' });
-
     const practices = await getPractices();
 
     const practicePipeline = pipeline(

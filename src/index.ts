@@ -9,5 +9,8 @@ import { runPipeline } from './pipeline/pipeline.service';
 });
 
 (async () => {
-    await runPipeline();
+    logger.info({ fn: 'index', status: 'start' });
+    await runPipeline()
+        .then(() => logger.info({ fn: 'index', status: 'done' }))
+        .catch((error) => logger.error({ fn: 'index', status: 'error', error }));
 })();
