@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-import { Permission } from './rater8.type';
-
 const client = axios.create({
     baseURL: 'https://rapi.rater8.com/api',
     auth: { username: <string>process.env.RATER8_USERNAME, password: <string>process.env.RATER8_PASSWORD },
@@ -9,5 +7,31 @@ const client = axios.create({
 });
 
 export const getPermissions = async () => {
+    type Permission = {
+        id: number;
+        name: string;
+        employees: {
+            id: number;
+            name: string;
+            clientCodes: string[];
+        }[];
+        locations: {
+            id: number;
+            name: string;
+            clientCodes: string[];
+        }[];
+    };
+
     return client.request<Permission[]>({ method: 'GET', url: '/permissions' }).then((response) => response.data);
+};
+
+type GetReviewsOptions = { practiceId: number; locationId: number };
+
+export const getReviews = async ({ practiceId, locationId }: GetReviewsOptions) => {
+    return client
+        .request<object[]>({
+            method: 'GET',
+            url: `/reviews/practice/${practiceId}/location/${locationId}`,
+        })
+        .then((response) => response.data);
 };
