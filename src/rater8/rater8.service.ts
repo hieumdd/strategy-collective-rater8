@@ -29,7 +29,7 @@ type GetReviewsOptions = { practiceId: number; locationId: number };
 
 export const getReviews = async ({ practiceId, locationId }: GetReviewsOptions) => {
     return client
-        .request<object[]>({
+        .request<object[] | null>({
             method: 'GET',
             url: `/reviews/practice/${practiceId}/location/${locationId}`,
         })

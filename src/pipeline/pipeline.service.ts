@@ -25,7 +25,10 @@ export const runPipeline = async () => {
     Promise.all(
         practices.flatMap((practice) => {
             return practice.locations.map(async (location) => {
-                return getReviews({ practiceId: practice.id, locationId: location.id }).then((reviews) => {
+                return getReviews({
+                    practiceId: practice.id,
+                    locationId: location.id,
+                }).then((reviews) => {
                     (reviews || []).forEach((review) => reviewStream.push(review));
                 });
             });
