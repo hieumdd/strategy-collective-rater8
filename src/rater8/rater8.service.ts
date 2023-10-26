@@ -6,8 +6,8 @@ const client = axios.create({
     headers: { 'Content-Type': 'application/json' },
 });
 
-export const getPermissions = async () => {
-    type Permission = {
+export const getPractices = async () => {
+    type Practice = {
         id: number;
         name: string;
         employees: {
@@ -22,7 +22,7 @@ export const getPermissions = async () => {
         }[];
     };
 
-    return client.request<Permission[]>({ method: 'GET', url: '/permissions' }).then((response) => response.data);
+    return client.request<Practice[]>({ method: 'GET', url: '/permissions' }).then((response) => response.data);
 };
 
 type GetReviewsOptions = { practiceId: number; locationId: number };

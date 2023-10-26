@@ -1,7 +1,7 @@
-import { getPermissions, getReviews } from './rater8.service';
+import { getPractices, getReviews } from './rater8.service';
 
 it('getPermissions', async () => {
-    return getPermissions()
+    return getPractices()
         .then((result) => expect(result).toBeDefined())
         .catch((error) => {
             throw error;
