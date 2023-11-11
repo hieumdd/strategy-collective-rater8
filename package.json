@@ -9,6 +9,7 @@
         "axios": "^1.5.1",
         "dayjs": "^1.11.10",
         "ndjson": "^2.0.0",
+        "p-map": "^4.0.0",
         "winston": "^3.11.0"
     },
     "devDependencies": {
